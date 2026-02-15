@@ -390,7 +390,7 @@ btnHug.addEventListener('click', () => {
 
 // Calcular días juntos (CAMBIA ESTA FECHA)
 function calculateDays() {
-    const startDate = new Date('2024-01-01'); // CAMBIA ESTA FECHA
+    const startDate = new Date('2022-12-13'); // CAMBIA ESTA FECHA
     const today = new Date();
     const diffTime = Math.abs(today - startDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
