@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de San Valentín 💜</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="whispers" id="whispers"></div>
+    <div class="stars" id="stars"></div>
+    <div class="clouds" id="clouds"></div>
+    <div class="hearts-container" id="hearts"></div>
+    
+    <button class="music-toggle" id="music-toggle">
+        <i class="bi bi-music-note-beamed"></i>
+    </button>
+
+    <!-- Modal Mensaje Secreto -->
+    <div class="secret-modal" id="secret-modal">
+        <div class="secret-cloud">
+            <p class="secret-text">
+                Si estás leyendo esto en un día difícil…<br>
+                quiero que recuerdes que eres mi persona favorita en este universo.
+            </p>
+            <button class="btn-back" id="btn-back">Volver a la carta</button>
+        </div>
+    </div>
+
+    <!-- Modal Música -->
+    <div class="music-modal" id="music-modal">
+        <div class="music-modal-content">
+            <button class="close-modal" id="close-modal">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="vinyl-player">
+                <div class="vinyl" id="vinyl">
+                    <div class="vinyl-cover">
+                        <img src="music/cover.jpg" alt="Portada" id="cover-img">
+                    </div>
+                </div>
+                <div class="vinyl-arm"></div>
+            </div>
+            <h3 class="song-title" id="song-title">Hacer un puente</h3>
+            <p class="song-artist" id="song-artist">La Franela</p>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/Hacer un puente_spotdown.org.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Vista 1: Carta -->
+    <div id="carta-view" class="view active">
+        <div class="envelope-cartoon" id="envelope">
+            <div class="envelope-body">
+                <i class="bi bi-heart-fill envelope-heart"></i>
+            </div>
+            <div class="envelope-flap"></div>
+        </div>
+        <p class="instruction">Toca el sobre para abrir <i class="bi bi-envelope-heart"></i></p>
+    </div>
+
+    <!-- Vista 2: Mensaje -->
+    <div id="mensaje-view" class="view">
+        <div class="letter-card">
+            <div class="corner-heart top-left"><i class="bi bi-heart-fill emoji-icon"></i></div>
+            <div class="corner-heart top-right"><i class="bi bi-heart-fill emoji-icon"></i></div>
+            <i class="bi bi-star-fill secret-star" id="secret-star"></i>
+            <h1 class="letter-title" id="letter-title">Para ti, mi amor <i class="bi bi-heart-fill"></i></h1>
+            <div class="easter-egg" id="easter-egg">Deja de tocar tanto, dramático.</div>
+            <p class="letter-date">27 de abril del 2023</p>
+            <p class="message" id="message">
+                Entonces me di cuenta<br>
+                de que no podía mirar a nadie<br>
+                como lo miré a él.<br><br>
+                
+                Con esa sonrisa que iluminaba mi día,<br>
+                con esa belleza que sigue siendo admirable,<br>
+                aunque siempre me la niegue.<br><br>
+                
+                Es difícil explicar cómo me siento,<br>
+                pero creo que me estoy<br>
+                verdaderamente enamorando de él.
+            </p>
+            <hr class="letter-divider">
+            <p class="message-epilogue">
+                Este pequeño poema lo escribí cuando estábamos lejos,<br>
+                cuando la distancia intentaba hacerse la fuerte<br>
+                y yo aprendía a quererte desde la ausencia.<br><br>
+                
+                Lo escribí en un momento en el que solo podía mirarte<br>
+                a través de recuerdos, pantallas y ganas.<br><br>
+                
+                Y ahora que puedo verte de cerca,<br>
+                que puedo sentir tu risa sin interferencias<br>
+                y abrazarte sin kilómetros de por medio…<br><br>
+                
+                estoy más enamorado que ese día.<br><br>
+                
+                Porque si a la distancia ya eras todo eso para mí,<br>
+                de cerca eres simplemente hermoso.<br><br>
+                
+                Y no solo por tu sonrisa.<br>
+                Sino por la forma en que existes conmigo.<br><br>
+                
+                <strong>feliz san valentín oso</strong>
+            </p>
+            <button id="btn-razones" class="btn-cartoon">
+                Ver razones por las que te amo
+                <i class="bi bi-arrow-right-heart-fill"></i>
+            </button>
+            <div class="corner-heart bottom-left"><i class="bi bi-heart-fill emoji-icon"></i></div>
+            <div class="corner-heart bottom-right"><i class="bi bi-heart-fill emoji-icon"></i></div>
+        </div>
+    </div>
+
+    <!-- Vista 3: Razones -->
+    <div id="razones-view" class="view">
+        <div class="razones-container">
+            <h2 class="razones-title">Razones por las que te amo</h2>
+            <div class="razon-bubble" id="razon-bubble">
+                <p id="razon-text">Haz clic en el corazón <i class="bi bi-heart-fill"></i></p>
+            </div>
+            <button class="heart-btn-big" id="heart-btn">
+                <i class="bi bi-heart-fill"></i>
+            </button>
+            <div class="counter-bubble">
+                <span id="razon-count">0</span> / 14 razones
+            </div>
+            <button id="btn-carrusel" class="btn-cartoon">
+                Ver nuestros recuerdos
+                <i class="bi bi-images"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Vista 4: Carrusel -->
+    <div id="carrusel-view" class="view">
+        <h2 class="carousel-title-cartoon">Nuestros Momentos Especiales</h2>
+        <div class="days-bubble" id="days-bubble">
+            <i class="bi bi-calendar-heart"></i>
+            Llevamos juntos <span id="days-count" class="days-number">0</span> días <i class="bi bi-heart-fill"></i>
+            <div class="days-tooltip" id="days-tooltip">Y cada uno ha valido la pena.</div>
+        </div>
+        <div class="polaroid-container">
+            <div class="polaroid active" data-index="0">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (2).jpeg" alt="Recuerdo 1">
+                <p class="polaroid-caption">nuestras pulceras en nuestra primera cita</p>
+            </div>
+            <div class="polaroid" data-index="1">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (3).jpeg" alt="Recuerdo 2">
+                <p class="polaroid-caption">nosotros en el batallon</p>
+            </div>
+            <div class="polaroid" data-index="2">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (4).jpeg" alt="Recuerdo 3">
+                <p class="polaroid-caption">♥♥♥</p>
+            </div>
+            <div class="polaroid" data-index="3">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (5).jpeg" alt="Recuerdo 4">
+                <p class="polaroid-caption">en la cabina de fotos</p>
+            </div>
+            <div class="polaroid" data-index="4">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (6).jpeg" alt="Recuerdo 5">
+                <p class="polaroid-caption">la primera vez que nos vimos</p>
+            </div>
+            <div class="polaroid" data-index="5">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (7).jpeg" alt="Recuerdo 6">
+                <p class="polaroid-caption">nuestra foto autista</p>
+            </div>
+            <div class="polaroid" data-index="6">
+                <img src="images/WhatsApp Image 2026-02-15 at 12.29.44 AM (8).jpeg" alt="Recuerdo 7">
+                <p class="polaroid-caption">esta foto ♥</p>
+            </div>
+        </div>
+        <button class="btn-hug" id="btn-hug">Ven aquí</button>
+    </div>
+
+    <!-- Vista 5: Abrazo -->
+    <div id="abrazo-view" class="view">
+        <div class="hug-container">
+            <div class="blob blob-left"></div>
+            <div class="blob blob-right"></div>
+            <div class="hug-text">
+                Si pudiera atravesar la pantalla…<br>
+                ahora mismo te abrazaría así.
+            </div>
+            <div class="hug-heart">
+                <i class="bi bi-heart-fill"></i>
+            </div>
+            <img src="images/https___media1_tenor.com_images_3c7a770da649c31628f60696962cefca_tenor.gif_itemid=13883173" alt="Abrazo" class="hug-gif">
+            <button class="btn-restart" id="btn-restart">¿Hacerlo de nuevo?
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
